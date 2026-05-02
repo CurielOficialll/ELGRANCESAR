@@ -1,15 +1,17 @@
 <![CDATA[<div align="center">
 
-# 🏆 ELGRANCESAR
+<h1>🏆 ELGRANCESAR</h1>
 
-### Terminal de Apuestas Premium
+<h3>Terminal de Apuestas Premium</h3>
 
-[![Version](https://img.shields.io/badge/versión-1.0.0-gold?style=for-the-badge)](/)
-[![Stack](https://img.shields.io/badge/React_19-+_Firebase-blue?style=for-the-badge)](/)
-[![License](https://img.shields.io/badge/licencia-Apache_2.0-green?style=for-the-badge)](/)
-[![Estado](https://img.shields.io/badge/estado-beta-orange?style=for-the-badge)](/)
+<p>
+  <img src="https://img.shields.io/badge/version-1.0.0-gold?style=for-the-badge" alt="Version" />
+  <img src="https://img.shields.io/badge/React_19-Firebase-blue?style=for-the-badge" alt="Stack" />
+  <img src="https://img.shields.io/badge/licencia-Apache_2.0-green?style=for-the-badge" alt="License" />
+  <img src="https://img.shields.io/badge/estado-beta-orange?style=for-the-badge" alt="Estado" />
+</p>
 
-*Plataforma de apuestas deportivas e hípicas de grado institucional con cuotas en tiempo real, ejecución atómica de transacciones y diseño premium.*
+<p><em>Plataforma de apuestas deportivas e hipicas de grado institucional con cuotas en tiempo real, ejecucion atomica de transacciones y diseno premium.</em></p>
 
 </div>
 
@@ -17,11 +19,11 @@
 
 ## 📋 Tabla de Contenidos
 
-- [Descripción General](#-descripción-general)
-- [Características](#-características)
-- [Stack Tecnológico](#-stack-tecnológico)
+- [Descripcion General](#-descripcion-general)
+- [Caracteristicas](#-caracteristicas)
+- [Stack Tecnologico](#-stack-tecnologico)
 - [Arquitectura](#-arquitectura)
-- [Instalación](#-instalación)
+- [Instalacion](#-instalacion)
 - [Variables de Entorno](#-variables-de-entorno)
 - [Estructura del Proyecto](#-estructura-del-proyecto)
 - [Base de Datos](#-base-de-datos)
@@ -33,59 +35,61 @@
 
 ---
 
-## 🎯 Descripción General
+## 🎯 Descripcion General
 
-**ELGRANCESAR** es una plataforma web de apuestas deportivas e hípicas premium, diseñada para ofrecer una experiencia de usuario de alto nivel con cuotas en tiempo real, transacciones atómicas y un panel de administración completo.
+**ELGRANCESAR** es una plataforma web de apuestas deportivas e hipicas premium, diseñada para ofrecer una experiencia de usuario de alto nivel con cuotas en tiempo real, transacciones atomicas y un panel de administracion completo.
 
 | Aspecto | Detalle |
 |---------|---------|
-| **Problema que resuelve** | Centraliza mercados deportivos e hípicos en una terminal profesional con ejecución segura |
-| **Usuarios objetivo** | Apostadores deportivos, aficionados hípicos, operadores de casas de apuestas |
-| **Propuesta de valor** | UX premium, cuotas en vivo, transacciones atómicas con Firebase, panel admin completo |
-| **Estado actual** | Beta — funcional con autenticación, apuestas y administración |
+| **Problema que resuelve** | Centraliza mercados deportivos e hipicos en una terminal profesional con ejecucion segura |
+| **Usuarios objetivo** | Apostadores deportivos, aficionados hipicos, operadores de casas de apuestas |
+| **Propuesta de valor** | UX premium, cuotas en vivo, transacciones atomicas con Firebase, panel admin completo |
+| **Estado actual** | Beta — funcional con autenticacion, apuestas y administracion |
 
 ---
 
-## ✨ Características
+## ✨ Caracteristicas
 
 ### Funcionalidades Completadas
-- ✅ Autenticación Email/Password con Firebase Auth
-- ✅ Registro con nombre completo, username, cédula, teléfono y fecha de nacimiento
-- ✅ Recuperación de contraseña por correo
+
+- ✅ Autenticacion Email/Password con Firebase Auth
+- ✅ Registro con nombre completo, username, cedula, telefono y fecha de nacimiento
+- ✅ Recuperacion de contraseña por correo
 - ✅ Dashboard de mercados deportivos en tiempo real (Firestore)
-- ✅ Sistema de apuestas con cupón interactivo (BettingSlip)
-- ✅ Transacciones atómicas (lectura de saldo → apuesta → descuento en una transacción)
-- ✅ Liquidación de apuestas con pago atómico al ganador
+- ✅ Sistema de apuestas con cupon interactivo (BettingSlip)
+- ✅ Transacciones atomicas (lectura de saldo → apuesta → descuento en una transaccion)
+- ✅ Liquidacion de apuestas con pago atomico al ganador
 - ✅ Billetera con historial de transacciones en tiempo real
-- ✅ Panel de administración con KPIs, gestión de usuarios y creación de eventos
-- ✅ Diseño 100% responsive (móvil, tablet, desktop)
-- ✅ Navegación inferior nativa estilo Material 3 para móviles
+- ✅ Panel de administracion con KPIs, gestion de usuarios y creacion de eventos
+- ✅ Diseño 100% responsive (movil, tablet, desktop)
+- ✅ Navegacion inferior nativa estilo Material 3 para moviles
 - ✅ Logo 3D rotativo como watermark de fondo
 - ✅ Animaciones fluidas con Framer Motion
 - ✅ Sistema de roles (STANDARD, VIP, ADMIN)
 
 ### Limitaciones Actuales
-- ⚠️ No hay pasarela de pago real (depósito/retiro son UI placeholder)
-- ⚠️ Los datos de KPIs del admin son estáticos (mock)
+
+- ⚠️ No hay pasarela de pago real (deposito/retiro son UI placeholder)
+- ⚠️ Los datos de KPIs del admin son estaticos (mock)
 - ⚠️ No hay sistema de notificaciones push
-- ⚠️ No hay verificación de edad real
-- ⚠️ AuthContext existe pero no está integrado globalmente (se usa prop drilling)
+- ⚠️ No hay verificacion de edad real
+- ⚠️ AuthContext existe pero no esta integrado globalmente (se usa prop drilling)
 
 ---
 
-## 🛠 Stack Tecnológico
+## 🛠 Stack Tecnologico
 
-| Capa | Tecnología | Versión | Justificación |
+| Capa | Tecnologia | Version | Justificacion |
 |------|-----------|---------|---------------|
 | **UI Framework** | React | 19.0.1 | Ecosistema maduro, Server Components ready |
 | **Lenguaje** | TypeScript | 5.8.2 | Type safety, mejor DX |
-| **Estilos** | Tailwind CSS | 4.1.14 | Utility-first, design tokens nativos via `@theme` |
+| **Estilos** | Tailwind CSS | 4.1.14 | Utility-first, design tokens nativos via @theme |
 | **Animaciones** | Motion (Framer) | 12.23.24 | AnimatePresence, layout animations |
 | **Iconos** | Lucide React | 0.546.0 | Tree-shakeable, consistente |
-| **Iconos Material** | Material Symbols | CDN | Variantes fill/outlined dinámicas |
+| **Iconos Material** | Material Symbols | CDN | Variantes fill/outlined dinamicas |
 | **Backend/BaaS** | Firebase | 12.12.1 | Auth + Firestore + Hosting |
-| **IA** | Google GenAI SDK | 1.29.0 | Pronósticos con IA (futuro) |
-| **Bundler** | Vite | 6.2.3 | HMR ultra-rápido, ESM nativo |
+| **IA** | Google GenAI SDK | 1.29.0 | Pronosticos con IA (futuro) |
+| **Bundler** | Vite | 6.2.3 | HMR ultra-rapido, ESM nativo |
 | **Fuentes** | Google Fonts | CDN | Inter, Lexend, Space Grotesk |
 
 ---
@@ -104,19 +108,18 @@
 │  │Dashboard │  │ Footer   │  │ useBets  │            │
 │  │ Wallet   │  │AuthModal │  └──────────┘            │
 │  │ Admin    │  │BettingSlip│                         │
-│  └────┬─────┘  │MarketCards│                         │
-│       │        └──────────┘                          │
-│       ▼                                              │
+│  └─────────┘  │MarketCards│                          │
+│               └──────────┘                           │
+│                    │                                 │
+│                    ▼                                 │
 │  ┌──────────────────────────────────┐                │
 │  │      Services Layer (db.ts)      │                │
 │  │  getUserProfile | placeBet       │                │
 │  │  getMarkets | settleBet          │                │
-│  │  createMarket | syncUserProfile  │                │
 │  └────────────┬─────────────────────┘                │
 │               ▼                                      │
 │  ┌──────────────────────────────────┐                │
 │  │    Firebase SDK (lib/firebase.ts) │                │
-│  │  Auth | Firestore | Error Handler│                │
 │  └────────────┬─────────────────────┘                │
 └───────────────┼──────────────────────────────────────┘
                 ▼
@@ -125,20 +128,19 @@
 │  ┌────────────┐  ┌────────────────┐  ┌────────────┐ │
 │  │ Firebase   │  │   Firestore    │  │  Firebase   │ │
 │  │   Auth     │  │  (default DB)  │  │  Hosting    │ │
-│  │Email/Pass  │  │ users/markets  │  │  CDN/SSL    │ │
 │  └────────────┘  └────────────────┘  └────────────┘ │
 └──────────────────────────────────────────────────────┘
 ```
 
-**Patrón:** Monolito SPA con BaaS (Backend-as-a-Service). Sin servidor propio.
+**Patron:** Monolito SPA con BaaS (Backend-as-a-Service). Sin servidor propio.
 
 ---
 
-## 🚀 Instalación
+## 🚀 Instalacion
 
 ### Pre-requisitos
 
-| Software | Versión Mínima |
+| Software | Version Minima |
 |----------|---------------|
 | Node.js | 18.x |
 | npm | 9.x |
@@ -148,7 +150,7 @@
 
 ```bash
 # 1. Clonar el repositorio
-git clone https://github.com/tu-usuario/ELGRANCESAR.git
+git clone https://github.com/CurielOficialll/ELGRANCESAR.git
 cd ELGRANCESAR
 
 # 2. Instalar dependencias
@@ -161,33 +163,31 @@ npm install
 npm run dev
 # → Disponible en http://localhost:3000
 
-# 5. (Opcional) Build de producción
+# 5. (Opcional) Build de produccion
 npm run build
 npm run preview
 ```
 
-### Solución a Errores Comunes
+### Solucion a Errores Comunes
 
-| Error | Causa | Solución |
+| Error | Causa | Solucion |
 |-------|-------|----------|
 | `auth/operation-not-allowed` | Email/Password no habilitado | Habilitar en Firebase Console → Authentication → Providers |
-| `PERMISSION_DENIED` | Reglas de Firestore expiradas | Actualizar fecha en `firestore.rules` y re-desplegar |
-| `MODULE_NOT_FOUND` | Dependencias faltantes | Ejecutar `npm install` |
-| Puerto 3000 ocupado | Otro proceso activo | Cambiar puerto en `package.json` o cerrar el proceso |
+| `PERMISSION_DENIED` | Reglas de Firestore expiradas | Actualizar fecha en firestore.rules y re-desplegar |
+| `MODULE_NOT_FOUND` | Dependencias faltantes | Ejecutar npm install |
+| Puerto 3000 ocupado | Otro proceso activo | Cambiar puerto en package.json o cerrar el proceso |
 
 ---
 
 ## 🔐 Variables de Entorno
 
-| Variable | Descripción | Obligatoria | Ejemplo |
+| Variable | Descripcion | Obligatoria | Ejemplo |
 |----------|-------------|:-----------:|---------|
-| `GEMINI_API_KEY` | API key de Google Gemini AI | No* | `AIzaSy...` |
+| `GEMINI_API_KEY` | API key de Google Gemini AI | No | `AIzaSy...` |
 
-> *Actualmente solo se usa para funcionalidades futuras de pronósticos con IA.
+### Configuracion de Firebase
 
-### Configuración de Firebase
-
-El archivo `firebase-applet-config.json` contiene la configuración del proyecto:
+El archivo `firebase-applet-config.json` contiene la configuracion del proyecto:
 
 ```json
 {
@@ -210,13 +210,13 @@ ELGRANCESAR/
 │   └── logo.png                  # Logo principal (watermark 3D)
 ├── src/
 │   ├── components/
-│   │   ├── AuthModal.tsx          # Modal de login/registro/recuperación
-│   │   ├── BettingSlip.tsx        # Cupón lateral de apuestas
-│   │   ├── Footer.tsx             # Pie de página con enlaces legales
-│   │   ├── Header.tsx             # Barra de navegación + saldo + auth
+│   │   ├── AuthModal.tsx          # Modal de login/registro/recuperacion
+│   │   ├── BettingSlip.tsx        # Cupon lateral de apuestas
+│   │   ├── Footer.tsx             # Pie de pagina con enlaces legales
+│   │   ├── Header.tsx             # Barra de navegacion + saldo + auth
 │   │   └── MarketCards.tsx        # Tarjetas de mercados (Live + Racing)
 │   ├── context/
-│   │   └── AuthContext.tsx        # Context de autenticación (preparado)
+│   │   └── AuthContext.tsx        # Context de autenticacion (preparado)
 │   ├── data/
 │   │   └── mock-markets.ts       # Datos mock para Home (trending/racing)
 │   ├── hooks/
@@ -234,15 +234,17 @@ ELGRANCESAR/
 │   ├── App.tsx                    # Layout principal + router + estado global
 │   ├── index.css                  # Design tokens + animaciones + utilidades
 │   ├── main.tsx                   # Entry point React
-│   └── types.ts                   # Interfaces TypeScript (UserProfile, Bet, Market)
-├── firebase-applet-config.json    # Configuración Firebase
+│   └── types.ts                   # Interfaces TypeScript
+├── docs/
+│   ├── TECHNICAL_DOCS.md          # Documentacion tecnica enterprise (12 secciones)
+│   └── API_REFERENCE.md           # Referencia completa de API
+├── firebase-applet-config.json    # Configuracion Firebase
 ├── firebase-blueprint.json        # Schema de entidades Firestore
 ├── firestore.rules                # Reglas de seguridad Firestore
-├── firestore.indexes.json         # Índices de Firestore
-├── security_spec.md               # Especificación de seguridad
+├── security_spec.md               # Especificacion de seguridad
 ├── package.json                   # Dependencias y scripts
-├── tsconfig.json                  # Configuración TypeScript
-└── vite.config.ts                 # Configuración Vite + Tailwind
+├── tsconfig.json                  # Configuracion TypeScript
+└── vite.config.ts                 # Configuracion Vite + Tailwind
 ```
 
 ---
@@ -262,102 +264,75 @@ firestore/
 │   ├── username: string
 │   ├── role: "STANDARD" | "VIP" | "ADMIN"
 │   ├── balance: number
-│   ├── cedula?: string
-│   ├── phone?: string
-│   ├── birthDate?: string
 │   └── createdAt: Timestamp
 │   │
-│   └── bets/{betId}               # Sub-colección de apuestas
-│       ├── userId: string
-│       ├── marketId: string
-│       ├── marketName: string
-│       ├── outcomeName: string
-│       ├── stake: number
-│       ├── odds: number
+│   └── bets/{betId}               # Sub-coleccion de apuestas
+│       ├── userId, marketId, marketName, outcomeName
+│       ├── stake: number, odds: number
 │       ├── payout: number | null
 │       ├── status: "WON" | "PENDING" | "LOST"
 │       └── createdAt: Timestamp
 │
 └── markets/{marketId}             # Mercados de apuestas
-    ├── name: string
-    ├── category: string
-    ├── startTime: Timestamp
-    ├── status: "LIVE" | "UPCOMING" | "FINISHED" | "SETTLED" | "SUSPENDED"
+    ├── name, category, startTime, status
     ├── teams: Array<{name, score?, odds, logo?}>
     ├── drawOdds?: number
     └── liveTime?: string
 ```
 
-### Operaciones Atómicas
+### Operaciones Atomicas
 
 Las apuestas usan `runTransaction()` de Firestore para garantizar consistencia:
 
-1. **Colocar apuesta:** Lee saldo → valida fondos → crea bet → descuenta saldo (todo atómico)
-2. **Liquidar apuesta:** Verifica status PENDING → actualiza status → si WON, acredita payout (atómico)
+1. **Colocar apuesta:** Lee saldo → valida fondos → crea bet → descuenta saldo (todo atomico)
+2. **Liquidar apuesta:** Verifica status PENDING → actualiza status → si WON, acredita payout (atomico)
 
 ---
 
 ## 🧩 Componentes
 
-| Componente | Ubicación | Descripción | Props Clave |
-|-----------|-----------|-------------|-------------|
-| `App` | `src/App.tsx` | Layout raíz, router, estado global | — |
-| `Header` | `components/Header.tsx` | Nav + saldo + auth buttons | `user, onLogin, onLogout, onNavigate, currentPage` |
-| `Footer` | `components/Footer.tsx` | Links legales + copyright | — |
-| `AuthModal` | `components/AuthModal.tsx` | Login / Registro / Recuperar | `isOpen, onClose` |
-| `BettingSlip` | `components/BettingSlip.tsx` | Cupón de apuestas lateral | `selections, onRemove, onPlaceBet, user` |
-| `LiveMatchCard` | `components/MarketCards.tsx` | Tarjeta de partido en vivo | `market, onSelect` |
-| `RacingCard` | `components/MarketCards.tsx` | Tarjeta de carrera hípica | `market, onSelect` |
-| `Home` | `pages/Home.tsx` | Hero + mercados destacados | `onSelectBet, onLogin` |
-| `Dashboard` | `pages/Dashboard.tsx` | Mercados live + upcoming | `onSelectBet, activeBetIds` |
-| `WalletPage` | `pages/Wallet.tsx` | Saldo + historial | `user, onLogin` |
-| `AdminPage` | `pages/Admin.tsx` | Panel completo de admin | — |
-
-### Custom Hooks
-
-| Hook | Archivo | Retorna |
-|------|---------|---------|
-| `useMarkets` | `hooks/useMarkets.ts` | `{ markets, liveMatches, upcomingMatches, loading }` |
-| `useBets` | `hooks/useBets.ts` | `{ bets, pendingBets, totalPending, loading }` |
+| Componente | Descripcion | Props Clave |
+|-----------|-------------|-------------|
+| `App` | Layout raiz, router, estado global | — |
+| `Header` | Nav + saldo + auth buttons | user, onLogin, onLogout, onNavigate |
+| `Footer` | Links legales + copyright | — |
+| `AuthModal` | Login / Registro / Recuperar | isOpen, onClose |
+| `BettingSlip` | Cupon de apuestas lateral | selections, onRemove, onPlaceBet |
+| `LiveMatchCard` | Tarjeta de partido en vivo | market, onSelect |
+| `RacingCard` | Tarjeta de carrera hipica | market, onSelect |
+| `Home` | Hero + mercados destacados | onSelectBet, onLogin |
+| `Dashboard` | Mercados live + upcoming | onSelectBet, activeBetIds |
+| `WalletPage` | Saldo + historial | user, onLogin |
+| `AdminPage` | Panel completo de admin | — |
 
 ---
 
 ## 🔒 Seguridad
 
 ### Medidas Implementadas
-- 🔒 Autenticación vía Firebase Auth (servidor de Google)
-- 🔒 Transacciones atómicas previenen race conditions en saldos
-- 🔒 Error handler centralizado con contexto de auth para debugging
-- 🔒 Reglas de Firestore con validación temporal
-- 🔒 Input sanitization en username (solo `[a-z0-9_]`)
-- 🔒 Contraseña mínima 6 caracteres (Firebase default)
 
-### Especificación de Seguridad (12 Dirty Dozen Tests)
-Documentados en `security_spec.md`:
-1. Identity Spoofing — Prevenir apuestas con userId ajeno
-2. Infinite Stakes — Rechazar stakes negativos o >1M
-3. Ghost Odds Injection — Rechazar odds de 1,000,000
-4. Self-Balance Boost — Bloquear auto-modificación de balance
-5. Market Sabotage — Solo admin puede cambiar status de mercado
-6. Time Travel — Validar `createdAt` contra `request.time`
-7. Role Escalation — Bloquear cambio de STANDARD a ADMIN
-8. Shadow Field Injection — Rechazar campos no definidos
-9. Document ID Poisoning — Limitar longitud de IDs
-10. Resource Exhaustion — Limitar arrays de teams/runners
-11. Negative Score — Rechazar scores negativos
-12. Outcome Overwrite — Impedir cambiar LOST a WON post-liquidación
+- 🔒 Autenticacion via Firebase Auth (servidor de Google)
+- 🔒 Transacciones atomicas previenen race conditions en saldos
+- 🔒 Error handler centralizado con contexto de auth
+- 🔒 Reglas de Firestore con validacion temporal
+- 🔒 Input sanitization en username (solo a-z, 0-9, _)
+- 🔒 Contraseña minima 6 caracteres (Firebase default)
+
+### 12 Dirty Dozen Security Tests
+
+Documentados en `security_spec.md` — incluyen pruebas contra: Identity Spoofing, Infinite Stakes, Ghost Odds Injection, Self-Balance Boost, Market Sabotage, Time Travel, Role Escalation, Shadow Field Injection, Document ID Poisoning, Resource Exhaustion, Negative Score, Outcome Overwrite.
 
 ---
 
 ## 📜 Scripts Disponibles
 
-| Script | Comando | Descripción |
+| Script | Comando | Descripcion |
 |--------|---------|-------------|
-| `dev` | `npm run dev` | Servidor de desarrollo en puerto 3000 |
-| `build` | `npm run build` | Build de producción con Vite |
-| `preview` | `npm run preview` | Preview del build de producción |
-| `clean` | `npm run clean` | Elimina carpeta `dist/` |
-| `lint` | `npm run lint` | Type-check con TypeScript (sin emit) |
+| dev | `npm run dev` | Servidor de desarrollo en puerto 3000 |
+| build | `npm run build` | Build de produccion con Vite |
+| preview | `npm run preview` | Preview del build de produccion |
+| clean | `npm run clean` | Elimina carpeta dist/ |
+| lint | `npm run lint` | Type-check con TypeScript (sin emit) |
 
 ---
 
@@ -366,7 +341,7 @@ Documentados en `security_spec.md`:
 ### Firebase Hosting
 
 ```bash
-# 1. Build de producción
+# 1. Build de produccion
 npm run build
 
 # 2. Desplegar reglas de Firestore
@@ -376,8 +351,6 @@ npx firebase-tools deploy --only firestore:rules --project elgrancesar-betting
 npx firebase-tools deploy --only hosting --project elgrancesar-betting
 ```
 
-**URL de producción:** `https://elgrancesar-betting.web.app`
-
 ---
 
 ## 🗺 Roadmap
@@ -385,34 +358,18 @@ npx firebase-tools deploy --only hosting --project elgrancesar-betting
 | Prioridad | Feature | Estado |
 |:---------:|---------|--------|
 | 🔴 | Pasarela de pagos (Stripe/PayPal) | Pendiente |
-| 🔴 | Verificación de identidad KYC | Pendiente |
+| 🔴 | Verificacion de identidad KYC | Pendiente |
 | 🟡 | Notificaciones push (FCM) | Pendiente |
-| 🟡 | Integrar AuthContext globalmente (eliminar prop drilling) | Pendiente |
-| 🟡 | Pronósticos con IA (Gemini API) | Pendiente |
-| 🟢 | Sistema de toasts en vez de `alert()` | Pendiente |
-| 🟢 | Separar router en componente dedicado | Pendiente |
+| 🟡 | Integrar AuthContext globalmente | Pendiente |
+| 🟡 | Pronosticos con IA (Gemini API) | Pendiente |
+| 🟢 | Sistema de toasts en vez de alert() | Pendiente |
 | 🟢 | Tests E2E con Playwright | Pendiente |
-
----
-
-## 📊 Estado del Proyecto
-
-| Módulo | Completado | Notas |
-|--------|:----------:|-------|
-| Autenticación | ✅ 100% | Email/Pass + Registro completo |
-| Home / Landing | ✅ 100% | Hero + mercados mock |
-| Dashboard deportivo | ✅ 95% | Falta filtro real por categoría |
-| Sistema de apuestas | ✅ 100% | Transacciones atómicas |
-| Billetera | ✅ 90% | Falta depósito/retiro real |
-| Panel Admin | ✅ 85% | Falta finanzas y ajustes |
-| Responsive | ✅ 100% | Probado en Galaxy Fold → Desktop |
-| Seguridad | 🟡 60% | Reglas temporales, falta hardening |
 
 ---
 
 <div align="center">
 
-**ELGRANCESAR** © 2026 — Todos los derechos reservados.
+<strong>ELGRANCESAR</strong> &copy; 2026 — Todos los derechos reservados.
 
 18+ Juega con responsabilidad.
 
