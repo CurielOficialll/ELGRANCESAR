@@ -1,0 +1,75 @@
+{
+  "entities": {
+    "User": {
+      "title": "User Profile",
+      "description": "User account data and balance",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string" },
+        "email": { "type": "string", "format": "email" },
+        "displayName": { "type": "string" },
+        "role": { "type": "string", "enum": ["STANDARD", "VIP", "ADMIN"] },
+        "balance": { "type": "number" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["uid", "email", "role", "balance"]
+    },
+    "BettingMarket": {
+      "title": "Betting Market",
+      "description": "Sports or racing event",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" },
+        "category": { "type": "string" },
+        "startTime": { "type": "string", "format": "date-time" },
+        "status": { "type": "string", "enum": ["LIVE", "UPCOMING", "FINISHED", "SETTLED", "SUSPENDED"] },
+        "teams": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": { "type": "string" },
+              "score": { "type": "number" },
+              "odds": { "type": "number" },
+              "logo": { "type": "string" }
+            }
+          }
+        },
+        "drawOdds": { "type": "number" },
+        "liveTime": { "type": "string" }
+      },
+      "required": ["name", "category", "startTime", "status", "teams"]
+    },
+    "Bet": {
+      "title": "Placement Bet",
+      "description": "A bet placed by a user",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string" },
+        "marketId": { "type": "string" },
+        "marketName": { "type": "string" },
+        "outcomeName": { "type": "string" },
+        "stake": { "type": "number" },
+        "odds": { "type": "number" },
+        "payout": { "type": "number" },
+        "status": { "type": "string", "enum": ["WON", "PENDING", "LOST"] },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["userId", "marketId", "outcomeName", "stake", "odds", "status", "createdAt"]
+    }
+  },
+  "firestore": {
+    "users/{userId}": {
+      "schema": "User",
+      "description": "User profiles"
+    },
+    "markets/{marketId}": {
+      "schema": "BettingMarket",
+      "description": "Available betting markets"
+    },
+    "users/{userId}/bets/{betId}": {
+      "schema": "Bet",
+      "description": "User betting history"
+    }
+  }
+}
