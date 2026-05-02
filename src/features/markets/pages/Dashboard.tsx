@@ -1,4 +1,4 @@
-import { BettingMarket, MarketStatus } from '../types';
+import { BettingMarket, MarketStatus } from '../types/market.types';
 import { motion } from 'motion/react';
 import { useMarkets } from '../hooks/useMarkets';
 

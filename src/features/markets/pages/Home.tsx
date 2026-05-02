@@ -1,6 +1,7 @@
 import { ArrowRight } from 'lucide-react';
-import { BettingMarket } from '../types';
-import { LiveMatchCard, RacingCard } from '../components/MarketCards';
+import { BettingMarket } from '../types/market.types';
+import { LiveMatchCard } from '../components/LiveMatchCard';
+import { RacingCard } from '../components/RacingCard';
 import { motion } from 'motion/react';
 import { mockTrending, mockRacing } from '../data/mock-markets';
 

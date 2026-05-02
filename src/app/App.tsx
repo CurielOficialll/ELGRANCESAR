@@ -6,8 +6,7 @@
 import { useState, useEffect } from 'react';
 import { Header, Footer } from '../shared/components';
 import { BettingSlip } from '../features/betting';
-import Home from '../pages/Home';
-import Dashboard from '../pages/Dashboard';
+import { Home, Dashboard } from '../features/markets';
 import { WalletPage } from '../features/wallet';
 import { AdminPage } from '../features/admin';
 import { BettingMarket, BetSelection, UserProfile } from '../types';
