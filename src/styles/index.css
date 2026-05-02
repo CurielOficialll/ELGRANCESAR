@@ -1,0 +1,113 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Lexend:wght@400;600;700;900&family=Space+Grotesk:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-lexend: "Lexend", sans-serif;
+  --font-mono: "Space Grotesk", ui-monospace, SFMono-Regular, monospace;
+
+  /* Imperial Prestige Palette */
+  --color-surface-dim: #101415;
+  --color-surface: #101415;
+  --color-surface-bright: #363a3b;
+  --color-surface-container-lowest: #0b0f10;
+  --color-surface-container-low: #191c1e;
+  --color-surface-container: #1d2022;
+  --color-surface-container-high: #272a2c;
+  --color-surface-container-highest: #323537;
+  --color-on-surface: #e0e3e5;
+  --color-on-surface-variant: #c6c6cd;
+  --color-primary: #bec6e0;
+  --color-secondary: #e9c349;
+  --color-secondary-container: #af8d11;
+  --color-tertiary: #4edea3;
+  --color-error: #ffb4ab;
+  --color-outline: #909097;
+  --color-outline-variant: #45464d;
+}
+
+@layer base {
+  body {
+    @apply bg-surface-dim text-on-surface font-sans;
+  }
+}
+
+.material-symbols-outlined {
+  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+}
+
+.icon-fill {
+  font-variation-settings: 'FILL' 1;
+}
+
+/* Mobile Native Shell Enhancements */
+.mobile-native-shell {
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+  overflow-x: hidden;
+}
+
+@layer utilities {
+  .pb-safe {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+}
+
+/* Material Ripple Simulation */
+.ripple-btn {
+  position: relative;
+  overflow: hidden;
+}
+
+.ripple-btn::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 5px;
+  height: 5px;
+  background: rgba(255, 255, 255, 0.2);
+  opacity: 0;
+  border-radius: 100%;
+  transform: scale(1, 1) translate(-50%, -50%);
+  transform-origin: 50% 50%;
+}
+
+.ripple-btn:active::after {
+  animation: ripple 0.4s ease-out;
+}
+
+@keyframes ripple {
+  0% {
+    transform: scale(0, 0) translate(-50%, -50%);
+    opacity: 0.5;
+  }
+  100% {
+    transform: scale(40, 40) translate(-50%, -50%);
+    opacity: 0;
+  }
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Logo 3D Y-axis rotation */
+.logo-rotate-y {
+  animation: rotateY3D 20s linear infinite;
+  perspective: 1000px;
+}
+
+@keyframes rotateY3D {
+  0% {
+    transform: rotateY(0deg);
+  }
+  100% {
+    transform: rotateY(360deg);
+  }
+}
