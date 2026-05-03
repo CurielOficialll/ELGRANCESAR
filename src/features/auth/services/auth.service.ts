@@ -1,6 +1,6 @@
 import {
   db, handleFirestoreError, OperationType,
-  onSnapshot, setDoc, serverTimestamp, doc, getDoc,
+  onSnapshot, setDoc, updateDoc, serverTimestamp, doc, getDoc,
 } from '../../../infrastructure';
 import type { UserProfile } from '../types/auth.types';
 
@@ -47,5 +47,39 @@ export const createProfile = async (profile: UserProfile) => {
     });
   } catch (error) {
     handleFirestoreError(error, OperationType.WRITE, path);
+  }
+};
+
+/**
+ * Update an existing user profile document.
+ */
+export const updateProfileData = async (uid: string, data: Partial<UserProfile>) => {
+  const path = `users/${uid}`;
+  try {
+    await updateDoc(doc(db, 'users', uid), {
+      ...data,
+      updatedAt: serverTimestamp()
+    });
+  } catch (error) {
+    handleFirestoreError(error, OperationType.UPDATE, path);
+    throw error;
+  }
+};
+
+import { getAuth, updatePassword } from 'firebase/auth';
+
+/**
+ * Update the user's password in Firebase Auth.
+ */
+export const updateUserPassword = async (newPassword: string) => {
+  const auth = getAuth();
+  if (auth.currentUser) {
+    try {
+      await updatePassword(auth.currentUser, newPassword);
+    } catch (error) {
+      throw error;
+    }
+  } else {
+    throw new Error('No user is currently signed in.');
   }
 };
