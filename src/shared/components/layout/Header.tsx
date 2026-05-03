@@ -60,7 +60,7 @@ export default function Header({ user, onLogin, onLogout, onNavigate, currentPag
             <div className="flex items-center gap-1.5 md:gap-3">
               <div className="flex flex-col items-end mr-1 md:mr-2">
                 <span className="text-[10px] md:text-xs font-mono font-bold text-on-surface-variant uppercase tracking-widest hidden md:block">Saldo</span>
-                <span className="text-on-surface font-lexend font-bold text-sm md:text-base">
+                <span className="text-on-surface font-lexend font-bold text-sm md:text-base whitespace-nowrap">
                   {formatCurrency(user.balance)}
                 </span>
               </div>
