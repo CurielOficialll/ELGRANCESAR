@@ -23,9 +23,13 @@ export default function Header({ user, onLogin, onLogout, onNavigate, currentPag
         <div className="flex items-center gap-4 md:gap-8">
           <button 
             onClick={() => onNavigate('home')}
-            className="text-xl md:text-2xl font-black text-secondary tracking-tighter cursor-pointer hover:opacity-80 transition-opacity font-lexend active:scale-95"
+            className="flex items-center cursor-pointer hover:opacity-80 transition-opacity active:scale-95"
           >
-            ELGRANCESAR
+            <img 
+              src="/logo.png" 
+              alt="ELGRANCESAR" 
+              className="h-8 md:h-10 object-contain logo-rotate-y"
+            />
           </button>
           
           <nav className="hidden md:flex gap-6">
