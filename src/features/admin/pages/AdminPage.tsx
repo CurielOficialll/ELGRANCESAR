@@ -115,7 +115,7 @@ export default function AdminPage() {
 
 function AdminOverview() {
   const kpis = [
-    { label: 'Volumen Total (24h)', value: '$3.2M', trend: '+12.5%', icon: Financials, color: 'text-secondary' },
+    { label: 'Volumen Total (24h)', value: 'Bs. 3.2M', trend: '+12.5%', icon: Financials, color: 'text-secondary' },
     { label: 'Apuestas Activas Hoy', value: '14,205', trend: '+5.2%', icon: BarChart3, color: 'text-tertiary', live: true },
     { label: 'Usuarios Activos', value: '8,450', trend: '-1.1%', icon: Users, color: 'text-primary' }
   ];
@@ -170,7 +170,7 @@ function AdminOverview() {
                     className="w-[6%] bg-gradient-to-t from-secondary/40 to-secondary rounded-t-sm relative group cursor-crosshair"
                   >
                     <div className="absolute -top-10 left-1/2 -translate-x-1/2 bg-surface-container-highest px-2 py-1 rounded text-[10px] font-mono opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap z-20">
-                        ${(h * 24.3).toFixed(1)}k
+                        Bs. {(h * 24.3).toFixed(1)}k
                     </div>
                   </motion.div>
                 ))}
@@ -186,7 +186,7 @@ function AdminOverview() {
           </div>
           <div className="flex-1 overflow-y-auto p-2 divide-y divide-outline-variant/20 scrollbar-hide">
             {[
-              { type: 'SUCCESS', tag: 'MERCADO_LIQUIDADO', time: 'hace 2m', desc: 'Carrera 4 - Flemington liquidada.', meta: 'Vol: $45k | Pago: $32k' },
+              { type: 'SUCCESS', tag: 'MERCADO_LIQUIDADO', time: 'hace 2m', desc: 'Carrera 4 - Flemington liquidada.', meta: 'Vol: Bs. 45k | Pago: Bs. 32k' },
               { type: 'ERROR', tag: 'ALERTA_APUESTA_ALTA', time: 'hace 15m', desc: 'Usuario VIP_882 realizó una apuesta.', meta: 'Mercado: EPL - Man Utd vs Ars' },
               { type: 'INFO', tag: 'LOG_SISTEMA', time: 'hace 1h', desc: 'Feed de cuotas re-sincronizado.', meta: 'Proveedor: BetRadar API' },
               { type: 'SUCCESS', tag: 'MERCADO_CREADO', time: 'hace 3h', desc: 'Nuevo mercado de futuros agregado.', meta: 'Categoría: Tennis Grand Slam' }
@@ -216,9 +216,9 @@ function AdminOverview() {
 
 function AdminUsers() {
   const users = [
-    { name: 'Arthur Shelby', email: 'arthur.s@peaky.com', role: 'VIP', balance: '$14,500.00', status: 'Activo', img: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200' },
-    { name: 'Grace Burgess', email: 'grace.b@crown.co.uk', role: 'Estándar', balance: '$1,250.50', status: 'Activo', img: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=200' },
-    { name: 'Luca Changretta', email: 'luca.c@nyc.net', role: 'Estándar', balance: '$0.00', status: 'Suspendido', img: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=200' },
+    { name: 'Arthur Shelby', email: 'arthur.s@peaky.com', role: 'VIP', balance: 'Bs. 14,500.00', status: 'Activo', img: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200' },
+    { name: 'Grace Burgess', email: 'grace.b@crown.co.uk', role: 'Estándar', balance: 'Bs. 1,250.50', status: 'Activo', img: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=200' },
+    { name: 'Luca Changretta', email: 'luca.c@nyc.net', role: 'Estándar', balance: 'Bs. 0.00', status: 'Suspendido', img: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=200' },
     { name: 'Alfie Solomons', email: 'alfie.s@camden.co.uk', role: 'Admin', balance: '---', status: 'Activo', img: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=200' }
   ];
 

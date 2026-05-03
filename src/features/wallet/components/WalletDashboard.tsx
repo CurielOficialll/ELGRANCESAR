@@ -1,5 +1,6 @@
 import { Wallet, History, CreditCard, ArrowDown, ArrowUp } from 'lucide-react';
 import type { UserProfile, Bet } from '@/types';
+import { formatCurrency, formatCurrencyParts } from '@/shared/utils/currency';
 
 interface WalletDashboardProps {
   user: UserProfile;
@@ -10,8 +11,8 @@ export const WalletDashboard = ({ user, bets }: WalletDashboardProps) => {
   return (
     <div className="flex flex-col gap-10">
       <header>
-        <h1 className="font-lexend text-5xl font-black text-on-surface tracking-tight">Billetera e Historial</h1>
-        <p className="font-sans text-on-surface-variant mt-3 text-lg">Administra tus fondos y revisa transacciones anteriores.</p>
+        <h1 className="font-lexend text-3xl md:text-5xl font-black text-on-surface tracking-tight">Billetera e Historial</h1>
+        <p className="font-sans text-on-surface-variant mt-2 md:mt-3 text-base md:text-lg">Administra tus fondos y revisa transacciones anteriores.</p>
       </header>
 
       {/* Dashboard Grid */}
@@ -23,8 +24,10 @@ export const WalletDashboard = ({ user, bets }: WalletDashboardProps) => {
             <h2 className="font-mono text-[10px] font-bold text-on-surface-variant uppercase flex items-center gap-2 mb-4 tracking-widest">
               <Wallet className="w-4 h-4" /> Saldo Disponible
             </h2>
-            <div className="font-lexend text-6xl font-black text-secondary tracking-tighter">
-              ${Math.floor(user.balance).toLocaleString()}<span className="text-3xl text-on-surface-variant ml-1">.{(user.balance % 1).toFixed(2).substring(2)}</span>
+            <div className="font-lexend text-4xl sm:text-5xl md:text-6xl font-black text-secondary tracking-tighter flex items-baseline flex-wrap">
+              <span className="mr-1 sm:mr-2">Bs.</span>
+              {formatCurrencyParts(user.balance).integerPart}
+              <span className="text-2xl sm:text-3xl text-on-surface-variant ml-1">{formatCurrencyParts(user.balance).decimalPart}</span>
             </div>
           </div>
 
@@ -46,7 +49,7 @@ export const WalletDashboard = ({ user, bets }: WalletDashboardProps) => {
               </div>
               <div>
                 <h3 className="font-mono text-[10px] font-bold text-on-surface-variant uppercase tracking-widest">Saldo de Bono</h3>
-                <p className="font-lexend text-2xl font-bold text-on-surface">$0.00</p>
+                <p className="font-lexend text-xl md:text-2xl font-bold text-on-surface">{formatCurrency(0)}</p>
               </div>
             </div>
             <button className="text-secondary hover:text-amber-400 font-sans font-bold text-sm tracking-tight cursor-pointer">Ver Detalles</button>
@@ -59,8 +62,8 @@ export const WalletDashboard = ({ user, bets }: WalletDashboardProps) => {
               </div>
               <div>
                 <h3 className="font-mono text-[10px] font-bold text-on-surface-variant uppercase tracking-widest">En Juego (Pendiente)</h3>
-                <p className="font-lexend text-2xl font-bold text-on-surface">
-                  ${bets.filter(b => b.status === 'PENDING').reduce((acc, b) => acc + b.stake, 0).toFixed(2)}
+                <p className="font-lexend text-xl md:text-2xl font-bold text-on-surface">
+                  {formatCurrency(bets.filter(b => b.status === 'PENDING').reduce((acc, b) => acc + b.stake, 0))}
                 </p>
               </div>
             </div>
@@ -111,10 +114,10 @@ export const WalletDashboard = ({ user, bets }: WalletDashboardProps) => {
                       <div className="font-sans font-bold text-on-surface group-hover:text-secondary transition-colors">{tx.marketName}</div>
                       <div className="text-xs text-on-surface-variant">{tx.outcomeName}</div>
                     </td>
-                    <td className="p-4 text-right font-mono text-on-surface font-bold">${tx.stake.toFixed(2)}</td>
+                    <td className="p-4 text-right font-mono text-on-surface font-bold whitespace-nowrap">{formatCurrency(tx.stake)}</td>
                     <td className="p-4 text-right font-mono text-secondary font-bold">{tx.odds.toFixed(2)}</td>
-                    <td className={`p-4 text-right font-mono font-bold ${tx.status === 'WON' ? 'text-tertiary' : tx.status === 'LOST' ? 'text-error' : 'text-on-surface-variant'}`}>
-                      {tx.payout !== null ? (tx.payout > 0 ? `+$${tx.payout.toFixed(2)}` : `-$${Math.abs(tx.payout).toFixed(2)}`) : '--'}
+                    <td className={`p-4 text-right font-mono font-bold whitespace-nowrap ${tx.status === 'WON' ? 'text-tertiary' : tx.status === 'LOST' ? 'text-error' : 'text-on-surface-variant'}`}>
+                      {tx.payout !== null ? (tx.payout > 0 ? `+${formatCurrency(tx.payout)}` : `-${formatCurrency(Math.abs(tx.payout))}`) : '--'}
                     </td>
                     <td className="p-4 text-center">
                       <span className={`inline-flex items-center gap-2 px-3 py-1 rounded-full border text-[10px] font-bold uppercase tracking-wider ${

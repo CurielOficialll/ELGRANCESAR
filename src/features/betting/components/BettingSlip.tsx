@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { ReceiptText, X } from 'lucide-react';
 import { BetSelection, UserProfile } from '../../../types';
 import { motion, AnimatePresence } from 'motion/react';
+import { formatCurrency } from '../../../shared/utils/currency';
 
 interface BettingSlipProps {
   selections: BetSelection[];
@@ -67,7 +68,7 @@ export default function BettingSlip({ selections, onRemove, onPlaceBet, user }: 
         {selections.length > 0 && (
           <div className="p-4 bg-surface-container-lowest border-t border-surface-container-highest mt-auto">
             <div className="flex items-center justify-between mb-3 bg-surface-dim border border-outline-variant rounded p-3 focus-within:border-secondary transition-colors">
-              <span className="text-on-surface-variant font-mono">$</span>
+              <span className="text-on-surface-variant font-mono pr-2">Bs.</span>
               <input 
                 type="number" 
                 value={stakeValue}
@@ -79,7 +80,7 @@ export default function BettingSlip({ selections, onRemove, onPlaceBet, user }: 
             
             <div className="flex justify-between items-center mb-4 px-1">
               <span className="text-on-surface-variant font-sans text-sm">Ganancia Potencial:</span>
-              <span className="font-mono text-secondary font-bold">${potentialReturn.toFixed(2)}</span>
+              <span className="font-mono text-secondary font-bold text-lg">{formatCurrency(potentialReturn)}</span>
             </div>
 
             <button 

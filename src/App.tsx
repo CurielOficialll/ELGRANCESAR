@@ -159,7 +159,7 @@ export default function App() {
       />
 
       <div className="flex-grow flex justify-center w-full">
-        <div className={`w-full flex ${currentPage === 'admin' ? '' : 'max-w-[1440px] px-4 md:px-8 py-10'} gap-10`}>
+        <div className={`w-full flex ${currentPage === 'admin' ? '' : 'max-w-[1440px] px-4 md:px-8 py-6 md:py-10'} gap-6 lg:gap-10`}>
           <main className="flex-grow flex flex-col">
             <AnimatePresence mode="wait">
               <motion.div

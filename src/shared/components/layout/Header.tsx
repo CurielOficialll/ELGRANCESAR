@@ -1,5 +1,6 @@
 import { Search, Bell, UserCircle, LogIn, LogOut } from 'lucide-react';
 import { UserProfile } from '../../../types';
+import { formatCurrency } from '@/shared/utils/currency';
 
 interface HeaderProps {
   user: UserProfile | null;
@@ -60,8 +61,7 @@ export default function Header({ user, onLogin, onLogout, onNavigate, currentPag
               <div className="flex flex-col items-end mr-1 md:mr-2">
                 <span className="text-[10px] md:text-xs font-mono font-bold text-on-surface-variant uppercase tracking-widest hidden md:block">Saldo</span>
                 <span className="text-on-surface font-lexend font-bold text-sm md:text-base">
-                  <span className="text-secondary mr-0.5">$</span>
-                  {user.balance.toLocaleString(undefined, { minimumFractionDigits: 2 })}
+                  {formatCurrency(user.balance)}
                 </span>
               </div>
 
