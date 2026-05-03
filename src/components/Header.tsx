@@ -25,11 +25,16 @@ export default function Header({ user, onLogin, onLogout, onNavigate, currentPag
             onClick={() => onNavigate('home')}
             className="flex items-center cursor-pointer hover:opacity-80 transition-opacity active:scale-95"
           >
+            {/* Logo para celular */}
             <img 
               src="/logo.png" 
               alt="ELGRANCESAR" 
-              className="h-8 md:h-10 object-contain logo-rotate-y"
+              className="h-8 object-contain logo-rotate-y md:hidden"
             />
+            {/* Texto para computadora */}
+            <span className="hidden md:block text-2xl font-black text-secondary tracking-tighter font-lexend">
+              ELGRANCESAR
+            </span>
           </button>
           
           <nav className="hidden md:flex gap-6">
