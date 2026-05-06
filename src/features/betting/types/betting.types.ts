@@ -11,11 +11,10 @@ export interface BetSelection {
 export interface Bet {
   id?: string;
   userId: string;
-  marketId: string;
-  marketName: string;
-  outcomeName: string;
+  type: 'SINGLE' | 'PARLEY';
+  selections: BetSelection[];
   stake: number;
-  odds: number;
+  totalOdds: number;
   payout: number | null;
   status: 'WON' | 'PENDING' | 'LOST';
   createdAt: FirebaseTimestamp;

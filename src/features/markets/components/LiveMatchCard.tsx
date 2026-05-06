@@ -7,47 +7,42 @@ interface MarketCardProps {
 
 export function LiveMatchCard({ market, onSelect }: MarketCardProps) {
   return (
-    <div className="bg-surface-container border border-surface-container-highest rounded-xl overflow-hidden flex flex-col shadow-[0px_8px_16px_-4px_rgba(0,0,0,0.5)]">
-      <div className="bg-surface-container-highest px-4 py-2 flex justify-between items-center border-b border-surface-container-highest">
-        <span className="font-mono text-[12px] text-on-surface-variant flex items-center gap-2 uppercase tracking-wider font-bold">
-          <span className="material-symbols-outlined text-[16px]">sports_soccer</span> {market.category}
+    <div className="bg-surface-container-low border border-surface-container-highest rounded-lg overflow-hidden flex flex-col shadow-lg hover:border-secondary/50 transition-all group">
+      <div className="bg-surface-container-highest/50 px-3 py-1.5 flex justify-between items-center border-b border-surface-container-highest">
+        <span className="font-mono text-[9px] text-on-surface-variant flex items-center gap-1.5 uppercase tracking-widest font-bold">
+          <span className="material-symbols-outlined text-[14px]">sports_soccer</span> {market.category}
         </span>
-        <span className="text-tertiary font-mono text-[12px] flex items-center gap-1 font-bold">
-          <span className="w-1.5 h-1.5 rounded-full bg-tertiary animate-pulse"></span> {market.liveTime}
+        <span className="text-tertiary font-mono text-[9px] flex items-center gap-1 font-bold animate-pulse">
+          <span className="w-1 h-1 rounded-full bg-tertiary"></span> {market.liveTime}
         </span>
       </div>
-      <div className="p-5 flex flex-col gap-4">
-        <div className="flex justify-between items-center">
-          <div className="font-sans font-bold text-on-surface text-lg">{market.teams[0].name}</div>
-          <div className="font-lexend text-2xl text-secondary">{market.teams[0].score}</div>
-        </div>
-        <div className="flex justify-between items-center">
-          <div className="font-sans font-bold text-on-surface text-lg">{market.teams[1].name}</div>
-          <div className="font-lexend text-2xl text-on-surface-variant">{market.teams[1].score}</div>
+      <div className="p-3 flex flex-col gap-3">
+        <div className="flex flex-col gap-1">
+          <div className="flex justify-between items-center">
+            <div className="font-lexend font-bold text-on-surface text-sm truncate pr-2">{market.teams[0].name}</div>
+            <div className="font-lexend text-lg font-black text-secondary">{market.teams[0].score}</div>
+          </div>
+          <div className="flex justify-between items-center">
+            <div className="font-lexend font-bold text-on-surface text-sm truncate pr-2">{market.teams[1].name}</div>
+            <div className="font-lexend text-lg font-black text-on-surface-variant">{market.teams[1].score}</div>
+          </div>
         </div>
         
-        <div className="grid grid-cols-3 gap-3 mt-2">
-          <button 
-            onClick={() => onSelect(market, market.teams[0].name, market.teams[0].odds)}
-            className="bg-surface border border-surface-container-highest rounded-lg py-3 flex flex-col items-center hover:bg-surface-bright hover:border-secondary transition-all group cursor-pointer"
-          >
-            <span className="font-mono text-[10px] text-on-surface-variant group-hover:text-on-surface uppercase font-bold">1</span>
-            <span className="font-mono text-tertiary font-bold text-lg group-hover:text-secondary">{market.teams[0].odds.toFixed(2)}</span>
-          </button>
-          <button 
-            onClick={() => onSelect(market, 'Empate', market.drawOdds || 3.0)}
-            className="bg-surface border border-surface-container-highest rounded-lg py-3 flex flex-col items-center hover:bg-surface-bright hover:border-secondary transition-all group cursor-pointer"
-          >
-            <span className="font-mono text-[10px] text-on-surface-variant group-hover:text-on-surface uppercase font-bold">X</span>
-            <span className="font-mono text-tertiary font-bold text-lg group-hover:text-secondary">{(market.drawOdds || 3.0).toFixed(2)}</span>
-          </button>
-          <button 
-            onClick={() => onSelect(market, market.teams[1].name, market.teams[1].odds)}
-            className="bg-surface border border-surface-container-highest rounded-lg py-3 flex flex-col items-center hover:bg-surface-bright hover:border-secondary transition-all group cursor-pointer"
-          >
-            <span className="font-mono text-[10px] text-on-surface-variant group-hover:text-on-surface uppercase font-bold">2</span>
-            <span className="font-mono text-tertiary font-bold text-lg group-hover:text-secondary">{market.teams[1].odds.toFixed(2)}</span>
-          </button>
+        <div className="grid grid-cols-3 gap-2">
+          {[
+            { label: '1', name: market.teams[0].name, odds: market.teams[0].odds },
+            { label: 'X', name: 'Empate', odds: market.drawOdds || 3.0 },
+            { label: '2', name: market.teams[1].name, odds: market.teams[1].odds }
+          ].map((btn) => (
+            <button 
+              key={btn.label}
+              onClick={() => onSelect(market, btn.name, btn.odds)}
+              className="bg-surface-dim border border-surface-container-highest rounded py-1.5 flex flex-col items-center hover:bg-tertiary hover:border-tertiary transition-all group/btn cursor-pointer"
+            >
+              <span className="font-mono text-[8px] text-on-surface-variant group-hover/btn:text-on-tertiary uppercase font-bold">{btn.label}</span>
+              <span className="font-mono text-tertiary font-black text-sm group-hover/btn:text-on-tertiary">{btn.odds.toFixed(2)}</span>
+            </button>
+          ))}
         </div>
       </div>
     </div>

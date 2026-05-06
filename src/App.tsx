@@ -23,6 +23,7 @@ export default function App() {
   const [loading, setLoading] = useState(true);
   const [selections, setSelections] = useState<BetSelection[]>([]);
   const [isAuthOpen, setIsAuthOpen] = useState(false);
+  const [activeAdminTab, setActiveAdminTab] = useState('overview');
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, async (firebaseUser) => {
@@ -175,7 +176,12 @@ export default function App() {
                 {currentPage === 'live' && <Dashboard onSelectBet={handleSelectBet} activeBetIds={activeBetIds} />}
                 {currentPage === 'racing' && <Home onSelectBet={handleSelectBet} onLogin={handleLogin} />}
                 {currentPage === 'wallet' && <WalletPage user={user} onLogin={handleLogin} />}
-                {currentPage === 'admin' && <AdminPage />}
+                {currentPage === 'admin' && (
+                  <AdminPage 
+                    activeTab={activeAdminTab as any} 
+                    onTabChange={(tab) => setActiveAdminTab(tab)} 
+                  />
+                )}
               </motion.div>
             </AnimatePresence>
           </main>
@@ -199,31 +205,45 @@ export default function App() {
 
       {/* Mobile Bottom Nav - Material 3 Style */}
       <nav className="md:hidden bg-surface-container-low/95 backdrop-blur-xl fixed bottom-0 left-0 w-full z-50 flex justify-around items-center h-20 border-t border-outline-variant/30 px-2 pb-safe">
-        {[
-          { id: 'home', icon: 'home', label: 'Inicio' },
-          { id: 'sports', icon: 'sports_soccer', label: 'Deportes' },
-          { id: 'racing', icon: 'sports', label: 'Hípica' },
-          { id: 'live', icon: 'podcasts', label: 'En Vivo' },
-          { id: 'wallet', icon: 'wallet', label: 'Billetera' }
-        ].map(item => (
+        {(currentPage === 'admin' 
+          ? [
+              { id: 'overview', icon: 'grid_view', label: 'Resumen' },
+              { id: 'users', icon: 'group', label: 'Usuarios' },
+              { id: 'events', icon: 'calendar_month', label: 'Eventos' },
+              { id: 'settings', icon: 'settings', label: 'Ajustes' }
+            ]
+          : [
+              { id: 'home', icon: 'home', label: 'Inicio' },
+              { id: 'sports', icon: 'sports_soccer', label: 'Deportes' },
+              { id: 'racing', icon: 'sports', label: 'Hípica' },
+              { id: 'live', icon: 'podcasts', label: 'En Vivo' },
+              { id: 'wallet', icon: 'wallet', label: 'Billetera' }
+            ]
+        ).map(item => (
           <button
             key={item.id}
-            onClick={() => setCurrentPage(item.id)}
+            onClick={() => {
+              if (currentPage === 'admin') {
+                setActiveAdminTab(item.id);
+              } else {
+                setCurrentPage(item.id);
+              }
+            }}
             className="flex flex-col items-center justify-center flex-1 h-full py-1 group"
           >
             <div className={`relative px-5 py-1 rounded-full transition-all duration-300 ${
-              currentPage === item.id 
+              (currentPage === 'admin' ? activeAdminTab === item.id : currentPage === item.id)
                 ? 'bg-secondary/20 text-secondary' 
                 : 'text-on-surface-variant group-hover:bg-surface-container-highest/50'
             }`}>
               <span className={`material-symbols-outlined text-2xl transition-transform ${
-                currentPage === item.id ? 'scale-110 icon-fill' : ''
+                (currentPage === 'admin' ? activeAdminTab === item.id : currentPage === item.id) ? 'scale-110 icon-fill' : ''
               }`}>
                 {item.icon}
               </span>
             </div>
             <span className={`font-sans text-[11px] font-medium mt-1 transition-all ${
-              currentPage === item.id ? 'text-on-surface font-bold' : 'text-on-surface-variant'
+              (currentPage === 'admin' ? activeAdminTab === item.id : currentPage === item.id) ? 'text-on-surface font-bold' : 'text-on-surface-variant'
             }`}>
               {item.label}
             </span>

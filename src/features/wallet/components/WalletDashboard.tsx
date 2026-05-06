@@ -105,35 +105,59 @@ export const WalletDashboard = ({ user, bets }: WalletDashboardProps) => {
                       dateStr = tx.createdAt.toLocaleDateString();
                     }
                   }
+
+                  const isParley = tx.type === 'PARLEY';
+                  const mainSelection = tx.selections && tx.selections.length > 0 ? tx.selections[0] : null;
+
                   return (
-                  <tr key={tx.id} className="hover:bg-surface-container-highest/30 transition-colors group">
-                    <td className="p-4 font-mono text-sm text-on-surface-variant whitespace-nowrap">
-                      {dateStr}
-                    </td>
-                    <td className="p-4">
-                      <div className="font-sans font-bold text-on-surface group-hover:text-secondary transition-colors">{tx.marketName}</div>
-                      <div className="text-xs text-on-surface-variant">{tx.outcomeName}</div>
-                    </td>
-                    <td className="p-4 text-right font-mono text-on-surface font-bold whitespace-nowrap">{formatCurrency(tx.stake)}</td>
-                    <td className="p-4 text-right font-mono text-secondary font-bold">{tx.odds.toFixed(2)}</td>
-                    <td className={`p-4 text-right font-mono font-bold whitespace-nowrap ${tx.status === 'WON' ? 'text-tertiary' : tx.status === 'LOST' ? 'text-error' : 'text-on-surface-variant'}`}>
-                      {tx.payout !== null ? (tx.payout > 0 ? `+${formatCurrency(tx.payout)}` : `-${formatCurrency(Math.abs(tx.payout))}`) : '--'}
-                    </td>
-                    <td className="p-4 text-center">
-                      <span className={`inline-flex items-center gap-2 px-3 py-1 rounded-full border text-[10px] font-bold uppercase tracking-wider ${
-                        tx.status === 'WON' ? 'border-tertiary/30 bg-tertiary/10 text-tertiary' :
-                        tx.status === 'LOST' ? 'border-error/30 bg-error/10 text-error' :
-                        'border-outline/30 bg-surface-container-highest text-on-surface-variant'
-                      }`}>
-                        <span className={`w-1.5 h-1.5 rounded-full ${
-                           tx.status === 'WON' ? 'bg-tertiary' :
-                           tx.status === 'LOST' ? 'bg-error' :
-                           'bg-on-surface-variant'
-                        }`}></span> 
-                        {tx.status === 'WON' ? 'GANADA' : tx.status === 'LOST' ? 'PERDIDA' : 'PENDIENTE'}
-                      </span>
-                    </td>
-                  </tr>
+                    <tr key={tx.id} className="hover:bg-surface-container-highest/30 transition-colors group">
+                      <td className="p-4 font-mono text-sm text-on-surface-variant whitespace-nowrap">
+                        {dateStr}
+                      </td>
+                      <td className="p-4">
+                        {isParley ? (
+                          <div className="flex flex-col">
+                            <div className="font-sans font-bold text-secondary flex items-center gap-2">
+                              <span className="material-symbols-outlined text-sm">account_tree</span>
+                              PARLEY ({tx.selections?.length || 0})
+                            </div>
+                            <div className="text-[10px] text-on-surface-variant max-w-[200px] truncate">
+                              {tx.selections?.map(s => s.outcomeName).join(' + ')}
+                            </div>
+                          </div>
+                        ) : (
+                          <div className="flex flex-col">
+                            <div className="font-sans font-bold text-on-surface group-hover:text-secondary transition-colors">
+                              {mainSelection?.matchup || 'Evento Desconocido'}
+                            </div>
+                            <div className="text-xs text-on-surface-variant">{mainSelection?.outcomeName}</div>
+                          </div>
+                        )}
+                      </td>
+                      <td className="p-4 text-right font-mono text-on-surface font-bold whitespace-nowrap">
+                        {formatCurrency(tx.stake)}
+                      </td>
+                      <td className="p-4 text-right font-mono text-tertiary font-bold">
+                        {tx.totalOdds.toFixed(2)}
+                      </td>
+                      <td className={`p-4 text-right font-mono font-bold whitespace-nowrap ${tx.status === 'WON' ? 'text-tertiary' : tx.status === 'LOST' ? 'text-error' : 'text-on-surface-variant'}`}>
+                        {tx.payout !== null ? (tx.payout > 0 ? `+${formatCurrency(tx.payout)}` : formatCurrency(tx.payout)) : '--'}
+                      </td>
+                      <td className="p-4 text-center">
+                        <span className={`inline-flex items-center gap-2 px-3 py-1 rounded-full border text-[10px] font-bold uppercase tracking-wider ${
+                          tx.status === 'WON' ? 'border-tertiary/30 bg-tertiary/10 text-tertiary' :
+                          tx.status === 'LOST' ? 'border-error/30 bg-error/10 text-error' :
+                          'border-outline/30 bg-surface-container-highest text-on-surface-variant'
+                        }`}>
+                          <span className={`w-1.5 h-1.5 rounded-full ${
+                             tx.status === 'WON' ? 'bg-tertiary' :
+                             tx.status === 'LOST' ? 'bg-error' :
+                             'bg-on-surface-variant'
+                          }`}></span> 
+                          {tx.status === 'WON' ? 'GANADA' : tx.status === 'LOST' ? 'PERDIDA' : 'PENDIENTE'}
+                        </span>
+                      </td>
+                    </tr>
                   );
                 }) : (
                   <tr>

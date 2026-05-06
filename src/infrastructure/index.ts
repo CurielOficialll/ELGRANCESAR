@@ -29,5 +29,10 @@ export {
   serverTimestamp,
   doc,
   getDoc,
+  getDocs,
+  where,
+  orderBy,
+  limit,
+  collectionGroup,
   runTransaction,
 } from 'firebase/firestore';
